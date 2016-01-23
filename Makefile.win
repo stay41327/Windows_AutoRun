@@ -1,0 +1,48 @@
+# Project: Project1
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = WinSec.o Logon.o Drivers.o Service.o IE.o ST.o KD.o $(RES)
+LINKOBJ  = WinSec.o Logon.o Drivers.o Service.o IE.o ST.o KD.o $(RES)
+LIBS =  -L"lib"  
+INCS =  -I"include" 
+CXXINCS =  -I"lib/gcc/mingw32/3.4.2/include"  -I"include/c++/3.4.2/backward"  -I"include/c++/3.4.2/mingw32"  -I"include/c++/3.4.2"  -I"include" 
+BIN  = WinSec.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS)  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before WinSec.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "WinSec.exe" $(LIBS)
+
+WinSec.o: WinSec.cpp
+	$(CPP) -c WinSec.cpp -o WinSec.o $(CXXFLAGS)
+
+Logon.o: Logon.cpp
+	$(CPP) -c Logon.cpp -o Logon.o $(CXXFLAGS)
+
+Drivers.o: Drivers.cpp
+	$(CPP) -c Drivers.cpp -o Drivers.o $(CXXFLAGS)
+
+Service.o: Service.cpp
+	$(CPP) -c Service.cpp -o Service.o $(CXXFLAGS)
+
+IE.o: IE.cpp
+	$(CPP) -c IE.cpp -o IE.o $(CXXFLAGS)
+
+ST.o: ST.cpp
+	$(CPP) -c ST.cpp -o ST.o $(CXXFLAGS)
+
+KD.o: KD.cpp
+	$(CPP) -c KD.cpp -o KD.o $(CXXFLAGS)
